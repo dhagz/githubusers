@@ -3,6 +3,7 @@ package com.dhagz.githubusers.userlist
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
@@ -27,7 +28,7 @@ class UserListActivity : BaseActivity() {
   // Views
   private lateinit var container: RelativeLayout
   private lateinit var keyword: EditText
-  private lateinit var clear: EditText
+  private lateinit var clear: Button
   private lateinit var divider: View
   private lateinit var recycler: RecyclerView
 
@@ -92,7 +93,7 @@ class UserListActivity : BaseActivity() {
   private fun createView(): View {
     container = RelativeLayout(this)
     keyword = EditText(this)
-    clear = EditText(this)
+    clear = Button(this)
     divider = View(this)
     recycler = RecyclerView(this)
 
