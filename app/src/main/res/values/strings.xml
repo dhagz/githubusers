@@ -1,0 +1,18 @@
+<resources>
+  <string name="app_name">GitHub Users</string>
+  <string name="api_base_url">https://api.github.com/</string>
+
+  <!-- LIST -->
+  <string name="clear">Clear</string>
+  <string name="keyword">Keyword</string>
+  <string name="user_avatar">User Photo</string>
+  <string name="no_internet">Cannot connect to server.</string>
+
+  <!-- PROFILE -->
+  <string name="followers">followers •</string>
+  <string name="following">following</string>
+  <string name="note">Notes</string>
+  <string name="save">Save</string>
+  <string name="info_note_saved">Note saved.</string>
+  <string name="err_user_not_found">Unknown user.</string>
+</resources>

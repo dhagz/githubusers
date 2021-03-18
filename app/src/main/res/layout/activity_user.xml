@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <import type="android.view.View" />
+    <import type="com.dhagz.githubusers.utils.ConverterUtils" />
+
+    <variable
+      name="viewModel"
+      type="com.dhagz.githubusers.user.viewmodels.UserViewModel" />
+
+    <variable
+      name="data"
+      type="com.dhagz.githubusers.user.repo.local.UserWithNote" />
+  </data>
+
+  <ScrollView
+    android:id="@+id/container_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingBottom="8dp"
+      android:paddingLeft="32dp"
+      android:paddingRight="32dp"
+      android:paddingTop="8dp"
+      tools:context=".user.UserActivity">
+
+      <Button
+        android:id="@+id/save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_layout" />
+
+      <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/user_avatar"
+        android:maxHeight="256dp"
+        android:maxWidth="256dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_user_56" />
+
+      <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@{data.user.name}"
+        android:textColor="@color/primary_text"
+        android:textSize="32sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar"
+        tools:text="Tony Stark" />
+
+      <TextView
+        android:id="@+id/login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@{data.user.login}"
+        android:textColor="@color/secondary_text"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        tools:text="iamironman" />
+
+      <TextView
+        android:id="@+id/bio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@{data.user.bio}"
+        android:textColor="@color/secondary_text"
+        android:visibility="@{data.user.bio == null? View.GONE : View.VISIBLE}"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        tools:text="I am Ironman (snap)" />
+
+      <TextView
+        android:id="@+id/followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@{ConverterUtils.numberFormat(data.user.followers)}"
+        android:textColor="@color/secondary_text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/followers_label"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bio"
+        tools:text="3,000" />
+
+      <TextView
+        android:id="@+id/followers_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/followers"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintEnd_toStartOf="@+id/following"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/followers"
+        app:layout_constraintTop_toBottomOf="@+id/bio" />
+
+
+      <TextView
+        android:id="@+id/following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:text="@{ConverterUtils.numberFormat(data.user.following)}"
+        android:textColor="@color/secondary_text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/following_label"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/followers_label"
+        app:layout_constraintTop_toBottomOf="@+id/bio"
+        tools:text="4,500" />
+
+      <TextView
+        android:id="@+id/following_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/following"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/following"
+        app:layout_constraintTop_toBottomOf="@+id/bio"
+        tools:text="following" />
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/note_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/following_label">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/note"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/note"
+          android:inputType="textMultiLine"
+          android:text="@{data.note.note}" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </ScrollView>
+</layout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingBottom="0dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp">
+
+    <ImageView
+      android:id="@+id/avatar"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      android:contentDescription="@string/user_avatar"
+      android:src="@drawable/ic_user_56"
+      app:layout_constraintBottom_toTopOf="@+id/divider"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+      android:id="@+id/note_icon"
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:contentDescription="@string/user_avatar"
+      android:src="@drawable/ic_note_24"
+      android:visibility="visible"
+      app:layout_constraintBottom_toTopOf="@+id/divider"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/username"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
+      android:textColor="@color/primary_text"
+      android:textSize="16sp"
+      app:layout_constraintBottom_toTopOf="@+id/details"
+      app:layout_constraintLeft_toRightOf="@+id/avatar"
+      app:layout_constraintRight_toLeftOf="@+id/note_icon"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_chainStyle="packed"
+      tools:text="Tony Stark" />
+
+    <TextView
+      android:id="@+id/details"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
+      android:textColor="@color/secondary_text"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toTopOf="@+id/divider"
+      app:layout_constraintLeft_toRightOf="@+id/avatar"
+      app:layout_constraintRight_toLeftOf="@+id/note_icon"
+      app:layout_constraintTop_toBottomOf="@+id/username"
+      app:layout_constraintVertical_chainStyle="packed"
+      tools:text="I am Ironman (snap)" />
+
+    <View
+      android:id="@+id/divider"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:layout_marginStart="64dp"
+      android:layout_marginTop="8dp"
+      android:background="@color/divider"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+    <androidx.constraintlayout.widget.Barrier
+      android:id="@+id/barrier"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:barrierDirection="bottom"
+      app:constraint_referenced_ids="avatar,details,note_icon" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
